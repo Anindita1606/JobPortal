@@ -11,7 +11,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/Anindita1606/JobPortal?style=flat-square)  
 ![GitHub stars](https://img.shields.io/github/stars/Anindita1606/JobPortal?style=flat-square)  
 ![GitHub forks](https://img.shields.io/github/forks/Anindita1606/JobPortal?style=flat-square)  
-![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)  
+
 
 ---
 
