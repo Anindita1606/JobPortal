@@ -121,6 +121,8 @@
         <input type="text" class="form-control" name="uname" placeholder="Choose a Username" required/>
         <input type="password" class="form-control" name="pass" placeholder="Enter Password" required/>
         <input type="text" class="form-control" name="nm" placeholder="Enter Your Full Name" required/>
+        <input type="text" class="form-control" name="email" placeholder="Enter Your Email" required/>
+        <input type="text" class="form-control" name="phno" placeholder="Enter Your Ph Number" required/>
         
         <input type="submit" class="btn btn-primary btn-custom" value="REGISTER"/>
         

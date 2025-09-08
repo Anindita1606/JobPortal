@@ -34,7 +34,7 @@
 
 <div class="form-container">
     <h2>Job Seeker Registration</h2>
-    <form action="JobseekerRegisterServe" method="post">
+    <form action="ClientJobSeekerServe" method="post">
         <input type="text" class="form-control mb-3" name="username" placeholder="USERNAME" required/>
         <input type="password" class="form-control mb-3" name="password" placeholder="PASSWORD" required/>
         <input type="text" class="form-control mb-3" name="name" placeholder="NAME" required/>

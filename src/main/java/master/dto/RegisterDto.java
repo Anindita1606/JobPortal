@@ -4,6 +4,8 @@ public class RegisterDto {
 	private String uname;
 	private String pass;
 	private String nm;
+	private String email;
+	private String  phno;
 	public String getUname() {
 		return uname;
 	}
@@ -21,6 +23,18 @@ public class RegisterDto {
 	}
 	public void setNm(String nm) {
 		this.nm = nm;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPhno() {
+		return phno;
+	}
+	public void setPhno(String phno) {
+		this.phno = phno;
 	}
 	
 }

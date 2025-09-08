@@ -14,7 +14,7 @@ public class RegisterDao {
 	//private Statement st=null;
 	private PreparedStatement ps=null;
 	private ResultSet rs=null;
-	private String insert_sql="insert into register values(?,?,?)";
+	private String insert_sql="insert into register values(?,?,?,?,?)";
 	public void insertData(RegisterDto rdto)
 	{
 		try
@@ -25,6 +25,8 @@ public class RegisterDao {
 		 ps.setString(1,rdto.getUname());
 		 ps.setString(2,rdto.getPass());
 		 ps.setString(3,rdto.getNm());
+		 ps.setString(4, rdto.getEmail());
+		 ps.setString(5, rdto.getPhno());
 		 ps.executeUpdate();//storing data
 		 
 		}

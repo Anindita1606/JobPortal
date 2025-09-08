@@ -26,10 +26,14 @@ public class RegisterServe extends HttpServlet {
 		String uname=request.getParameter("uname");
 		String pass=request.getParameter("pass");
 		String nm=request.getParameter("nm");
+		String email=request.getParameter("email");
+		String phno=request.getParameter("phno");
 		RegisterDto rdto=new RegisterDto();
 		rdto.setUname(uname);
 		rdto.setPass(pass);
 		rdto.setNm(nm);
+		rdto.setEmail(email);
+		rdto.setPhno(phno);
 		RegisterDao rdao= new RegisterDao();
 		rdao.insertData(rdto);
 		response.sendRedirect("RegSuccess.jsp");
