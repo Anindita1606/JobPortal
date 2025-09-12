@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import master.dto.CompanyDto;
 import master.utilities.ConnectionFactory;
@@ -12,13 +13,15 @@ public class CompanyDao {
     private Connection cn = null;
     private PreparedStatement ps = null;
     private ResultSet rs = null;
-
+    private Statement st=null;
+    
     // ✅ Exclude compid from insert since it's AUTO_INCREMENT
     private String insert_sql = 
     	    "INSERT INTO company (COMPNAME, PHONE, EMAIL, ADDRESS) VALUES (?, ?, ?, ?)";
     private String delete_sql="delete from company where  COMPANYID=?";
     private String update_sql = 
             "UPDATE company SET PHONE=?, EMAIL=?, ADDRESS=? WHERE COMPANYID=?";
+    private String select_sql="select * from company";
     public void insertData(CompanyDto cdto) {
         try {
             ConnectionFactory con = new ConnectionFactory();
@@ -75,4 +78,22 @@ public class CompanyDao {
             try { if (cn != null) cn.close(); } catch (Exception e) {}
         }
     }
+	
+	public ResultSet getData() 
+	{
+		try
+		{
+			ConnectionFactory con=new ConnectionFactory();
+			cn=con.getConn();
+			st=cn.createStatement();
+			rs=st.executeQuery(select_sql);
+		 
+		}
+		
+		catch(SQLException se)
+		{
+			se.printStackTrace();
+		}
+		return rs;
+	}
 }

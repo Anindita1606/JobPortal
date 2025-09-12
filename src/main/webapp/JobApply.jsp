@@ -34,14 +34,18 @@
 
 <div class="form-container">
     <h2>Job Application</h2>
-    <form action="JobApplyServe" method="post">
+    <form action="ClientJobApplyServe" method="post">
         <div class="mb-3">
             <label class="form-label">USERNAME</label>
             <input type="text" class="form-control" name="username" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">JOB ID</label>
-            <input type="text" class="form-control" name="jobid" value="<%= request.getParameter("jobid") %>" readonly/>
+            <input type="text" class="form-control" name="jobid" required/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">JOB TYPE</label>
+            <input type="text" class="form-control" name="jobtype" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">APPLY DATE</label>
@@ -59,6 +63,21 @@
         document.getElementById("mySidebar").style.width = "0";
     }
 </script>
+<div style="text-align:center;">
+<%
+    String msg = request.getParameter("msg");
+    if ("success".equals(msg)) {
+%>
+    <p style="color:green;">Job Applied Successfully!</p>
+<%
+    } else if ("error".equals(msg)) {
+%>
+    <p style="color:red;">Failed to apply. Please try again.</p>
+<%
+    }
+%>
+</div>
+
 
 </body>
 </html>

@@ -54,6 +54,8 @@
     <a href="UpdateCompany.jsp" class="menu-item">UPDATE COMPANY</a>
     <a href="DeleteCompany.jsp" class="menu-item">DELETE COMPANY</a>
     <a href="Job.jsp" class="menu-item">JOB</a>
+    <a href="CompanyReport.jsp" class="menu-item">COMPANY LIST</a>
+    <a href="AdminMessage.jsp" class="menu-item">MASSAGES</a>
   </div>
 </div>
 

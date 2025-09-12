@@ -33,7 +33,7 @@ public class RegisterServe extends HttpServlet {
 		rdto.setPass(pass);
 		rdto.setNm(nm);
 		rdto.setEmail(email);
-		rdto.setPhno(phno);
+		rdto.setPhno(phno); 
 		RegisterDao rdao= new RegisterDao();
 		rdao.insertData(rdto);
 		response.sendRedirect("RegSuccess.jsp");

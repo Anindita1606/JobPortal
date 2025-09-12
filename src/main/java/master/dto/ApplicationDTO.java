@@ -3,6 +3,7 @@ package master.dto;
 public class ApplicationDTO {
 	private String username;
     private int jobid;
+    private String jobtype;
     private String applydt;
     private String status;
 	public String getUsername() {
@@ -17,6 +18,12 @@ public class ApplicationDTO {
 	public void setJobid(int jobid) {
 		this.jobid = jobid;
 	}
+	public String getJobtype() {
+		return jobtype;
+	}
+	public void setJobtype(String jobtype) {
+		this.jobtype = jobtype;
+	}
 	public String getApplydt() {
 		return applydt;
 	}
@@ -29,5 +36,6 @@ public class ApplicationDTO {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
      
 }

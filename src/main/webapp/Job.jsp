@@ -129,12 +129,8 @@
       <h2>JOB FORM</h2>
 
       <div class="mb-3">
-        <input type="text" class="form-control" name="jobid" placeholder="Enter Job ID" required>
-      </div>
-
-      <div class="mb-3">
-        <input type="text" class="form-control" name="jobnm" placeholder="Enter Job Name" required>
-      </div>
+  <input type="text" class="form-control" name="jobname" placeholder="Enter Job Name" required>
+</div>
 
       <div class="mb-3">
         <select class="form-select" name="jobtype" required>

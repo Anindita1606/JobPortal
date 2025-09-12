@@ -1,3 +1,5 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="master.dao.ClientApplicationDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -75,7 +77,7 @@
 <div class="search-container">
     <h2>My Job Applications</h2>
     
-    <form action="" method="post">
+    <form action="SearchApplication.jsp" method="post">
         <div class="input-group mb-4">
             <input type="text" class="form-control" name="username" placeholder="Enter your username to confirm" required>
             <button class="btn btn-custom" type="submit">Search</button>
@@ -85,29 +87,32 @@
     <table class="table table-striped table-hover">
         <thead class="table-dark">
             <tr>
-                <th>Job ID</th>
-                <th>Job Name</th>
-                <th>Company ID</th>
+                <th>Application ID</th>
+                <th>User name</th>
+                <th>JOB ID</th>
+                <th>Job type</th>
                 <th>Date Applied</th>
-                <th>Status</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>J102</td>
-                <td>Financial Analyst</td>
-                <td>C02</td>
-                <td>2025-08-20</td>
-                <td><span class="badge bg-success">Viewed</span></td>
-            </tr>
-            <tr>
-                <td>J103</td>
-                <td>Marketing Intern</td>
-                <td>C01</td>
-                <td>2025-08-18</td>
-                <td><span class="badge bg-secondary">Submitted</span></td>
-            </tr>
-        </tbody>
+   
+            <%
+	String username=request.getParameter("username");
+    ClientApplicationDAO adao=new ClientApplicationDAO();
+	ResultSet rs=adao.applications(username);
+	while(rs.next()){
+		%>
+		<tr>
+		<td><%=rs.getInt(1)%></td>
+		<td><%=rs.getString(2)%></td>
+		<td><%=rs.getString(3)%></td>
+		<td><%=rs.getString(4) %></td>
+		<td><%=rs.getDate(5)%></td>
+		</tr>
+		</tbody>
+		<%
+	}
+	%>
     </table>
     <div class="text-center mt-4">
         <a href="ClientMenu.jsp" class="btn btn-secondary">Back to Menu</a>

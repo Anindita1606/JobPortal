@@ -1,3 +1,5 @@
+<%@page import="master.dao.CompanyDao"%>
+<%@ page import="java.sql.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -168,5 +170,6 @@
             document.getElementById("mySidebar").style.width = "0";
         }
     </script>
+     
 </body>
 </html>

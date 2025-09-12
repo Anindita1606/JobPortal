@@ -1,58 +1,75 @@
 package master.dao;
 
-import master.dto.ApplicationDTO;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
+import master.dto.ApplicationDTO;
 import master.utilities.ConnectionFactory;
 
-import java.sql.*;
-import java.util.*;
-
 public class ClientApplicationDAO {
-	private Connection cn=null;
-	//private Statement st=null;
-	private PreparedStatement ps=null;
-	private ResultSet rs=null;
-	private String insert_sql="insert into applications values(?,?,?,?)";
-	private String search_sql="SELECT * FROM applications WHERE username = ?";
-    public void applyJob(ApplicationDTO adto) {
-        try {
-        	ConnectionFactory con=new ConnectionFactory();
-   		 cn=con.getConn();
-   		 ps=cn.prepareStatement(insert_sql);
+
+    // Queries
+    private static final String INSERT_SQL =
+        "INSERT INTO application(username, jobid, jobtype, appdate) VALUES (?, ?, ?, ?)";
+    
+    private static final String SEARCH_BY_DOMAIN_SQL =
+        "SELECT j.JOBID, j.JOBNAME, j.COMPANYID, j.JOBTYPE, j.YEAREXP " +
+        "FROM job j WHERE j.DOMAIN = ?";
+    
+    private static final String USER_APPLICATIONS_SQL =
+        "SELECT * FROM application WHERE username = ?";
+
+    // ✅ Apply for a job
+    public boolean applyJob(ApplicationDTO adto) {
+        boolean inserted = false;
+        try (Connection cn = new ConnectionFactory().getConn();
+             PreparedStatement ps = cn.prepareStatement(INSERT_SQL)) {
+
             ps.setString(1, adto.getUsername());
             ps.setInt(2, adto.getJobid());
-            ps.setString(3, adto.getApplydt());
-            ps.setString(4, "Pending"); // default status
-            ps.executeUpdate();//storing data
+            ps.setString(3, adto.getJobtype());
+
+            // Store appdate properly
+            ps.setDate(4, java.sql.Date.valueOf(adto.getApplydt())); // yyyy-MM-dd
+
+            int rows = ps.executeUpdate();
+            if (rows > 0) {
+                inserted = true;
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return inserted;
     }
-    public boolean searchJob(ApplicationDTO adto) {
-    	boolean flag=false;
-        try{
-        	ConnectionFactory con=new ConnectionFactory();
-      		 cn=con.getConn();
-      		 ps=cn.prepareStatement(search_sql);
-            ps.setString(1, adto.getUsername());
-            rs = ps.executeQuery();
 
-            /*while (rs.next()) {
-                ClientApplicationDTO app = new ClientApplicationDTO();
-                app.setUsername(rs.getString("username"));
-                app.setJobid(rs.getInt("jobid"));
-                app.setApplydt(rs.getString("applydt"));
-                app.setStatus(rs.getString("status"));
-                apps.add(app);
-            }*/
-            if(rs.next()) 
-   			  flag=true;
-   		 
+    // ✅ Fetch applications of a user
+    public ResultSet applications(String uname) {
+        ResultSet rs = null;
+        try {
+            Connection cn = new ConnectionFactory().getConn();
+            PreparedStatement ps = cn.prepareStatement(USER_APPLICATIONS_SQL);
+            ps.setString(1, uname);
+            rs = ps.executeQuery();
+        } catch (SQLException se) {
+            se.printStackTrace();
         }
-   		
-        catch (Exception e) {
-            e.printStackTrace();
+        return rs;
+    }
+
+    // ✅ Search jobs by domain
+    public ResultSet searchJobsByDomain(String domain) {
+        ResultSet rs = null;
+        try {
+            Connection cn = new ConnectionFactory().getConn();
+            PreparedStatement ps = cn.prepareStatement(SEARCH_BY_DOMAIN_SQL);
+            ps.setString(1, domain);
+            rs = ps.executeQuery();
+        } catch (SQLException se) {
+            se.printStackTrace();
         }
-        return flag;
+        return rs;
     }
 }

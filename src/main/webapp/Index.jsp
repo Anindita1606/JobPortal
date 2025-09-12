@@ -161,20 +161,24 @@ footer a:hover {
         <a href="Index.jsp"><i class="bi bi-house-door"></i> Home</a>
         <a href="Login.jsp"><i class="bi bi-box-arrow-in-right"></i> Login</a>
         <a href="Register.jsp"><i class="bi bi-person-plus"></i> Register</a>
-        <a href="#"><i class="bi bi-file-earmark-text"></i> About</a>
-        <a href="#"><i class="bi bi-telephone"></i> Contact</a>
+        <a href="About.jsp"><i class="bi bi-file-earmark-text"></i> About</a>
+        <a href="Contact.jsp"><i class="bi bi-telephone"></i> Contact</a>
     </div>
 
     <!-- Hamburger Menu -->
     <button class="openbtn" onclick="toggleNav()">☰</button>
 
     <!-- Search bar -->
-    <div class="container text-center">
-        <form class="d-flex justify-content-center search-bar">
-            <input class="form-control me-2" type="search" placeholder="Search jobs here..." aria-label="Search">
-            <button class="btn btn-light" type="submit"><i class="bi bi-search"></i></button>
-        </form>
-    </div>
+    <!-- Search bar -->
+<div class="container text-center">
+    <form class="d-flex justify-content-center search-bar" action="SearchJob.jsp" method="get">
+        <input class="form-control me-2" type="search" name="query" placeholder="Search jobs here..." aria-label="Search">
+        <button class="btn btn-light" type="submit">
+            <i class="bi bi-search"></i>
+        </button>
+    </form>
+</div>
+
 
     <!-- Text -->
     <div class="tagline">Find your dream job now</div>
