@@ -25,8 +25,42 @@
         flex-direction: column;
     }
 
+    /* Header (transparent, only content visible) */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1200;
+        padding: 12px 20px;
+    }
+
+    /* Brand Name */
+    .brand-name {
+        font-size: 40px;
+        font-weight: 700;
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(90deg, #00c6ff, #7b2ff7); /* cyan blue → purple */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+    }
+
+    /* Hamburger button - always vibrant */
+    .openbtn {
+        font-size: 26px;
+        cursor: pointer;
+        background: transparent;
+        border: none;
+        background: linear-gradient(90deg, #00c6ff, #7b2ff7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
     .search-bar {
-        margin-top: 30px;
+        margin-top: 120px;
         margin-left: auto;
         margin-right: auto;
         width: 90%;
@@ -36,7 +70,7 @@
     .tagline {
         font-size: 28px;
         font-weight: bold;
-        margin-top: 180px;
+        margin-top: 60px;
         color: #063970;
         text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
     }
@@ -91,67 +125,53 @@
         border-radius: 8px;
     }
 
-    /* Hamburger button */
-    .openbtn {
-        font-size: 28px;
-        cursor: pointer;
-        background-color: transparent;
-        border: none;
-        color: #063970;
-        position: absolute;
-        top: 15px;
-        left: 15px;
-        z-index: 1100;
+    /* Footer styles */
+    footer {
+        margin-top: auto;
+        background: #0b0f2d;
+        color: #bbb;
+        padding: 15px 10px;
+        text-align: center;
     }
-/* Footer styles */
-footer {
-    margin-top: auto;
-    background: #0b0f2d;
-    color: #bbb;
-    padding: 15px 10px;   /* reduced height */
-    text-align: center;
-}
 
-footer h5 {
-    color: #fff;
-    margin-bottom: 8px;   /* smaller spacing */
-    font-size: 16px;
-}
+    footer h5 {
+        color: #fff;
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
 
-footer p {
-    font-size: 14px;
-    margin: 0;
-}
+    footer p {
+        font-size: 14px;
+        margin: 0;
+    }
 
-footer a {
-    color: #bbb;
-    font-size: 14px;
-    text-decoration: none;
-    margin: 0 5px;
-}
+    footer a {
+        color: #bbb;
+        font-size: 14px;
+        text-decoration: none;
+        margin: 0 5px;
+    }
 
-footer a:hover {
-    color: #0dcaf0;
-}
+    footer a:hover {
+        color: #0dcaf0;
+    }
 
-.footer-social i {
-    font-size: 18px;   /* smaller icons */
-    margin: 0 6px;
-    cursor: pointer;
-    transition: 0.3s;
-}
+    .footer-social i {
+        font-size: 18px;
+        margin: 0 6px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
 
-.footer-social i:hover {
-    color: #0dcaf0;
-}
+    .footer-social i:hover {
+        color: #0dcaf0;
+    }
 
-.footer-bottom {
-    margin-top: 8px;
-    font-size: 12px;
-    color: #888;
-}
-
-    
+    .footer-bottom {
+        margin-top: 8px;
+        font-size: 12px;
+        color: #888;
+    }
 </style>
 </head>
 <body>
@@ -165,25 +185,25 @@ footer a:hover {
         <a href="Contact.jsp"><i class="bi bi-telephone"></i> Contact</a>
     </div>
 
-    <!-- Hamburger Menu -->
-    <button class="openbtn" onclick="toggleNav()">☰</button>
+    <!-- Header -->
+    <header class="d-flex align-items-center">
+        <button class="openbtn me-3" onclick="toggleNav()">☰</button>
+        <h1 class="brand-name">CareerConnect</h1>
+    </header>
 
     <!-- Search bar -->
-    <!-- Search bar -->
-<div class="container text-center">
-    <form class="d-flex justify-content-center search-bar" action="SearchJob.jsp" method="get">
-        <input class="form-control me-2" type="search" name="query" placeholder="Search jobs here..." aria-label="Search">
-        <button class="btn btn-light" type="submit">
-            <i class="bi bi-search"></i>
-        </button>
-    </form>
-</div>
-
+    <div class="container text-center">
+        <form class="d-flex justify-content-center search-bar" action="SearchJob.jsp" method="get">
+            <input class="form-control me-2" type="search" name="query" placeholder="Search jobs here..." aria-label="Search">
+            <button class="btn btn-light" type="submit">
+                <i class="bi bi-search"></i>
+            </button>
+        </form>
+    </div>
 
     <!-- Text -->
     <div class="tagline">Find your dream job now</div>
-   <div class="sub-text">Browse available opportunities and apply easily</div>
-
+    <div class="sub-text">Browse available opportunities and apply easily</div>
 
     <!-- Buttons -->
     <div>
@@ -191,36 +211,36 @@ footer a:hover {
         <a href="Register.jsp" class="btn btn-primary btn-custom">Register</a>
     </div>
 
-   <footer>
-    <div class="container">
-        <div class="row text-center align-items-center">
-            <div class="col-md-4">
-                <h5>About Us</h5>
-                <p>Connecting talent with opportunities. Your career growth is our priority.</p>
-            </div>
-            <div class="col-md-4">
-                <h5>Quick Links</h5>
-                <a href="Index.jsp">Home</a> | 
-                <a href="Login.jsp">Login</a> | 
-                <a href="Register.jsp">Register</a> | 
-                <a href="#">Contact</a>
-            </div>
-            <div class="col-md-4">
-                <h5>Follow Us</h5>
-                <div class="footer-social">
-                    <i class="bi bi-facebook"></i>
-                    <i class="bi bi-twitter"></i>
-                    <i class="bi bi-linkedin"></i>
-                    <i class="bi bi-instagram"></i>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row text-center align-items-center">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>Connecting talent with opportunities. Your career growth is our priority.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <a href="Index.jsp">Home</a> | 
+                    <a href="Login.jsp">Login</a> | 
+                    <a href="Register.jsp">Register</a> | 
+                    <a href="Contact.jsp">Contact</a>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <div class="footer-social">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-twitter"></i>
+                        <i class="bi bi-linkedin"></i>
+                        <i class="bi bi-instagram"></i>
+                    </div>
                 </div>
             </div>
+            <div class="footer-bottom">
+                © 2025 CareerConnect | Designed with ❤️ for career seekers
+            </div>
         </div>
-        <div class="footer-bottom">
-            © 2025 JobPortal | Designed with ❤️ for career seekers
-        </div>
-    </div>
-</footer>
-
+    </footer>
 
     <!-- Script for Sidebar -->
     <script>
